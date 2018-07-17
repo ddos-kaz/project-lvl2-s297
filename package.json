@@ -1,10 +1,17 @@
 {
   "name": "difference-estimator",
-  "version": "1.0.0",
+  "version": "1.0.2",
   "description": "Second project of Hexlet",
   "main": "index.js",
+  "files": [
+    "dist"
+  ],
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "babel": "babel",
+    "eslint": "eslint",
+    "babel-node": "babel-node",
+    "build": "NODE_ENV=production babel src --out-dir dist --source-maps inline",
+    "prepublishOnly": "npm run build"
   },
   "repository": {
     "type": "git",
@@ -13,7 +20,7 @@
   "keywords": [
     "difference_estimator"
   ],
-  "author": "ddoszhan",
+  "author": "ddos-kaz",
   "license": "ISC",
   "bugs": {
     "url": "https://github.com/ddos-kaz/project-lvl2-s297/issues"
@@ -31,6 +38,7 @@
     "eslint-plugin-import": "^2.13.0"
   },
   "dependencies": {
-    "commander": "^2.16.0"
+    "commander": "^2.16.0",
+    "user": "0.0.0"
   }
 }
