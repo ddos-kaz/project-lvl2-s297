@@ -1,8 +1,11 @@
 {
   "name": "difference-estimator",
-  "version": "1.0.3",
+  "version": "1.0.13",
   "description": "Second project of Hexlet",
   "main": "index.js",
+  "bin": {
+    "gendiff": "dist/bin/gendiff.js"
+  },
   "files": [
     "dist"
   ],
