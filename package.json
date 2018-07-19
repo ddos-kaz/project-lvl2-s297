@@ -1,8 +1,8 @@
 {
   "name": "difference-estimator",
-  "version": "1.0.13",
+  "version": "2.0.3",
   "description": "Second project of Hexlet",
-  "main": "index.js",
+  "main": "src/index.js",
   "bin": {
     "gendiff": "dist/bin/gendiff.js"
   },
@@ -14,7 +14,8 @@
     "eslint": "eslint",
     "babel-node": "babel-node",
     "build": "NODE_ENV=production babel src --out-dir dist --source-maps inline",
-    "prepublishOnly": "npm run build"
+    "prepublishOnly": "npm run build",
+    "test": "jest --watchAll"
   },
   "repository": {
     "type": "git",
@@ -33,15 +34,19 @@
     "babel-cli": "^6.26.0",
     "babel-core": "^6.26.3",
     "babel-eslint": "^8.2.6",
+    "babel-jest": "^23.4.0",
     "babel-preset-env": "^1.7.0",
     "babel-preset-stage-0": "^6.24.1",
     "eslint": "^5.1.0",
     "eslint-config-airbnb-base": "^13.0.0",
     "eslint-plugin-babel": "^5.1.0",
-    "eslint-plugin-import": "^2.13.0"
+    "eslint-plugin-import": "^2.13.0",
+    "eslint-plugin-jest": "^21.18.0",
+    "jest": "^23.4.1"
   },
   "dependencies": {
     "commander": "^2.16.0",
+    "lodash": "^4.17.10",
     "user": "0.0.0"
   }
 }
