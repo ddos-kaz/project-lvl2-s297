@@ -4,35 +4,8 @@ describe('Testing flat JSON file - step 2', () => {
   const pathBefore = `${__dirname}/_fixtures_/before.json`;
   const pathAfter = `${__dirname}/_fixtures_/after.json`;
 
-  it('genDiff contains: "+ timeout: 20"', () => {
-    expect(genDiff(pathBefore, pathAfter)).toMatch('+ timeout: 20');
-  });
-
-  it('genDiff contains: "host: hexlet.io"', () => {
-    expect(genDiff(pathBefore, pathAfter)).toMatch('host: hexlet.io');
-  });
-
-  it('genDiff not contains: "+ host: hexlet.io"', () => {
-    expect(genDiff(pathBefore, pathAfter)).not.toMatch('+ host: hexlet.io');
-  });
-
-  it('genDiff not contains: "- host: hexlet.io"', () => {
-    expect(genDiff(pathBefore, pathAfter)).not.toMatch('- host: hexlet.io');
-  });
-
-  it('genDiff contains: "- timeout: 50"', () => {
-    expect(genDiff(pathBefore, pathAfter)).toMatch('- timeout: 50');
-  });
-
-  it('genDiff contains: "- proxy: 123.234.53.22"', () => {
-    expect(genDiff(pathBefore, pathAfter)).toMatch('- proxy: 123.234.53.22');
-  });
-
-  it('genDiff contains: "- follow: false"', () => {
-    expect(genDiff(pathBefore, pathAfter)).toMatch('- follow: false');
-  });
-
-  it('genDiff contains: "+ verbose: true"', () => {
-    expect(genDiff(pathBefore, pathAfter)).toMatch('+ verbose: true');
+  it('genDiff check two JSON files', () => {
+    const expected = '{\n\t  host: hexlet.io\n\t+ timeout: 20\n\t- timeout: 50\n\t- proxy: 123.234.53.22\n\t- follow: false\n\t+ verbose: true\n}';
+    expect(genDiff(pathBefore, pathAfter)).toBe(expected);
   });
 });
