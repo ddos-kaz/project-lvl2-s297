@@ -9,4 +9,4 @@ lint:
 test:
 	npm test
 test-watch:
-	npm test --watch
+	npm test --watchAll

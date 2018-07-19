@@ -1,6 +1,6 @@
 {
   "name": "difference-estimator",
-  "version": "2.0.6",
+  "version": "3.0.2",
   "description": "Second project of Hexlet",
   "main": "src/index.js",
   "bin": {
@@ -46,6 +46,7 @@
   },
   "dependencies": {
     "commander": "^2.16.0",
+    "js-yaml": "^3.12.0",
     "lodash": "^4.17.10",
     "user": "0.0.0"
   }
