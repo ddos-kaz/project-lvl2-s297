@@ -29,7 +29,7 @@ describe('Testing flat JSON file - step 2', () => {
   });
 
   it('genDiff contains: "- follow: false"', () => {
-    expect(genDiff(pathBefore, pathAfter)).toMatch('- follow: false');    
+    expect(genDiff(pathBefore, pathAfter)).toMatch('- follow: false');
   });
 
   it('genDiff contains: "+ verbose: true"', () => {
