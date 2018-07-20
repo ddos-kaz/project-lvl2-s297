@@ -10,13 +10,13 @@ const parse = (beforeObj, afterObj, keys) => keys.reduce((acc, key) => {
     sign: '    ',
   };
   if (lodash.has(beforeObj, key) && lodash.has(afterObj, key) && beforeObj[key] !== afterObj[key]) {
-    return [...acc, lodash.assign(resultObj, { sign: '  + ' }), lodash.assign({}, resultObj, { value: beforeObj[key], sign: '  - ' })];
+    return [...acc, { ...resultObj, sign: '  + ' }, { ...resultObj, value: beforeObj[key], sign: '  - ' }];
   }
   if (lodash.has(beforeObj, key) && !lodash.has(afterObj, key)) {
-    return [...acc, lodash.assign({}, resultObj, { value: beforeObj[key], sign: '  - ' })];
+    return [...acc, { ...resultObj, value: beforeObj[key], sign: '  - ' }];
   }
   if (!lodash.has(beforeObj, key) && lodash.has(afterObj, key)) {
-    return [...acc, lodash.assign(resultObj, { sign: '  + ' })];
+    return [...acc, { ...resultObj, sign: '  + ' }];
   }
   return [...acc, resultObj];
 }, []);
