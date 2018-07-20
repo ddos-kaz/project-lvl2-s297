@@ -7,16 +7,16 @@ const parse = (beforeObj, afterObj, keys) => keys.reduce((acc, key) => {
   const resultObj = {
     name: key,
     value: afterObj[key],
-    sign: '\t  ',
+    sign: '    ',
   };
   if (lodash.has(beforeObj, key) && lodash.has(afterObj, key) && beforeObj[key] !== afterObj[key]) {
-    return [...acc, lodash.assign(resultObj, { sign: '\t+ ' }), lodash.assign({}, resultObj, { value: beforeObj[key], sign: '\t- ' })];
+    return [...acc, lodash.assign(resultObj, { sign: '  + ' }), lodash.assign({}, resultObj, { value: beforeObj[key], sign: '  - ' })];
   }
   if (lodash.has(beforeObj, key) && !lodash.has(afterObj, key)) {
-    return [...acc, lodash.assign({}, resultObj, { value: beforeObj[key], sign: '\t- ' })];
+    return [...acc, lodash.assign({}, resultObj, { value: beforeObj[key], sign: '  - ' })];
   }
   if (!lodash.has(beforeObj, key) && lodash.has(afterObj, key)) {
-    return [...acc, lodash.assign(resultObj, { sign: '\t+ ' })];
+    return [...acc, lodash.assign(resultObj, { sign: '  + ' })];
   }
   return [...acc, resultObj];
 }, []);
@@ -32,5 +32,5 @@ export default (pathToBeforeFile, pathToAfterFile) => {
   const afterObj = generateObj(afterFileExt, afterFile);
   const allKeys = lodash.union(Object.keys(beforeObj), Object.keys(afterObj));
   const ast = parse(beforeObj, afterObj, allKeys);
-  return `{\n${render(ast)}\n}`;
+  return `{\n${render(ast)}\n}\n`;
 };
