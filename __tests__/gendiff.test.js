@@ -1,25 +1,47 @@
 import fs from 'fs';
 import genDiff from '../src';
 
-describe('Testing flat JSON file - step 2', () => {
-  it('genDiff checks two JSON files', () => {
-    const pathBefore = `${__dirname}/__fixtures__/json/before.json`;
-    const pathAfter = `${__dirname}/__fixtures__/json/after.json`;
-    const expected = fs.readFileSync(`${__dirname}/__fixtures__/json/result`, 'utf-8');
+describe('Testing JSON files', () => {
+  it('genDiff checks two flat JSON files', () => {
+    const pathBefore = `${__dirname}/__fixtures__/json/before-flat.json`;
+    const pathAfter = `${__dirname}/__fixtures__/json/after-flat.json`;
+    const expected = fs.readFileSync(`${__dirname}/__fixtures__/json/result-flat`, 'utf-8');
     expect(genDiff(pathBefore, pathAfter)).toEqual(expected);
   });
+  it('genDiff checks two deep JSON files', () => {
+    const pathBefore = `${__dirname}/__fixtures__/json/before-deep.json`;
+    const pathAfter = `${__dirname}/__fixtures__/json/after-deep.json`;
+    const expected = fs.readFileSync(`${__dirname}/__fixtures__/json/result-deep`, 'utf-8');
+    expect(genDiff(pathBefore, pathAfter)).toEqual(expected);
+  });
+});
 
-  it('genDiff checks two YAML files', () => {
-    const pathBefore = `${__dirname}/__fixtures__/yaml/before.yaml`;
-    const pathAfter = `${__dirname}/__fixtures__/yaml/after.yaml`;
-    const expected = fs.readFileSync(`${__dirname}/__fixtures__/yaml/result`, 'utf-8');
+describe('Testing YAML files', () => {
+  it('genDiff checks two flat YAML files', () => {
+    const pathBefore = `${__dirname}/__fixtures__/yaml/before-flat.yaml`;
+    const pathAfter = `${__dirname}/__fixtures__/yaml/after-flat.yaml`;
+    const expected = fs.readFileSync(`${__dirname}/__fixtures__/yaml/result-flat`, 'utf-8');
     expect(genDiff(pathBefore, pathAfter)).toBe(expected);
   });
+  it('genDiff checks two deep YAML files', () => {
+    const pathBefore = `${__dirname}/__fixtures__/yaml/before-deep.yaml`;
+    const pathAfter = `${__dirname}/__fixtures__/yaml/after-deep.yaml`;
+    const expected = fs.readFileSync(`${__dirname}/__fixtures__/yaml/result-deep`, 'utf-8');
+    expect(genDiff(pathBefore, pathAfter)).toEqual(expected);
+  });
+});
 
-  it('genDiff checks two INI files', () => {
-    const pathBefore = `${__dirname}/__fixtures__/ini/before.ini`;
-    const pathAfter = `${__dirname}/__fixtures__/ini/after.ini`;
-    const expected = fs.readFileSync(`${__dirname}/__fixtures__/ini/result`, 'utf-8');
+describe('Testing INI files', () => {
+  it('genDiff checks two flat INI files', () => {
+    const pathBefore = `${__dirname}/__fixtures__/ini/before-flat.ini`;
+    const pathAfter = `${__dirname}/__fixtures__/ini/after-flat.ini`;
+    const expected = fs.readFileSync(`${__dirname}/__fixtures__/ini/result-flat`, 'utf-8');
     expect(genDiff(pathBefore, pathAfter)).toBe(expected);
+  });
+  it('genDiff checks two deep INI files', () => {
+    const pathBefore = `${__dirname}/__fixtures__/ini/before-deep.ini`;
+    const pathAfter = `${__dirname}/__fixtures__/ini/after-deep.ini`;
+    const expected = fs.readFileSync(`${__dirname}/__fixtures__/ini/result-deep`, 'utf-8');
+    expect(genDiff(pathBefore, pathAfter)).toEqual(expected);
   });
 });
