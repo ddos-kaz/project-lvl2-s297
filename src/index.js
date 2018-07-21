@@ -52,5 +52,5 @@ export default (pathToBeforeFile, pathToAfterFile, format = 'default') => {
   const beforeObj = generateObj(beforeFileExt)(beforeFile);
   const afterObj = generateObj(afterFileExt)(afterFile);
   const ast = buildAST(beforeObj, afterObj);
-  return renderAST(ast, format);
+  return renderAST(format, ast);
 };

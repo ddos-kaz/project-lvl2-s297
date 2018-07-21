@@ -38,4 +38,4 @@ const buildLine = (obj, level) => {
 
 const parseAST = (ast, level = 0) => ast.map(obj => buildLine(obj, level + 1)).join('\n');
 
-export default ast => `{\n${parseAST(ast)}\n}\n`;
+export default ast => `{\n${parseAST(ast)}\n}`;

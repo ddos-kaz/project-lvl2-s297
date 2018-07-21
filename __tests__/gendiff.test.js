@@ -6,28 +6,42 @@ describe('Testing JSON files', () => {
     const pathBefore = `${__dirname}/__fixtures__/json/before-flat.json`;
     const pathAfter = `${__dirname}/__fixtures__/json/after-flat.json`;
     const expected = fs.readFileSync(`${__dirname}/__fixtures__/json/result-flat`, 'utf-8');
-    expect(genDiff(pathBefore, pathAfter)).toEqual(expected);
+    expect(genDiff(pathBefore, pathAfter)).toEqual(expected.slice(0, -1));
   });
 
   it('genDiff checks two deep JSON files : default', () => {
     const pathBefore = `${__dirname}/__fixtures__/json/before-deep.json`;
     const pathAfter = `${__dirname}/__fixtures__/json/after-deep.json`;
     const expected = fs.readFileSync(`${__dirname}/__fixtures__/json/result-deep`, 'utf-8');
-    expect(genDiff(pathBefore, pathAfter)).toEqual(expected);
+    expect(genDiff(pathBefore, pathAfter)).toEqual(expected.slice(0, -1));
   });
 
   it('genDiff checks two flat JSON files : plain', () => {
     const pathBefore = `${__dirname}/__fixtures__/json/before-flat.json`;
     const pathAfter = `${__dirname}/__fixtures__/json/after-flat.json`;
     const expected = fs.readFileSync(`${__dirname}/__fixtures__/json/result-flat-plain`, 'utf-8');
-    expect(genDiff(pathBefore, pathAfter, 'plain')).toEqual(expected);
+    expect(genDiff(pathBefore, pathAfter, 'plain')).toEqual(expected.slice(0, -1));
   });
 
   it('genDiff checks two deep JSON files : plain', () => {
     const pathBefore = `${__dirname}/__fixtures__/json/before-deep.json`;
     const pathAfter = `${__dirname}/__fixtures__/json/after-deep.json`;
     const expected = fs.readFileSync(`${__dirname}/__fixtures__/json/result-deep-plain`, 'utf-8');
-    expect(genDiff(pathBefore, pathAfter, 'plain')).toEqual(expected);
+    expect(genDiff(pathBefore, pathAfter, 'plain')).toEqual(expected.slice(0, -1));
+  });
+
+  it('genDiff checks two flat JSON files : json', () => {
+    const pathBefore = `${__dirname}/__fixtures__/json/before-flat.json`;
+    const pathAfter = `${__dirname}/__fixtures__/json/after-flat.json`;
+    const expected = fs.readFileSync(`${__dirname}/__fixtures__/json/result-flat-json`, 'utf-8');
+    expect(genDiff(pathBefore, pathAfter, 'json')).toEqual(expected.slice(0, -1));
+  });
+
+  it('genDiff checks two deep JSON files : json', () => {
+    const pathBefore = `${__dirname}/__fixtures__/json/before-deep.json`;
+    const pathAfter = `${__dirname}/__fixtures__/json/after-deep.json`;
+    const expected = fs.readFileSync(`${__dirname}/__fixtures__/json/result-deep-json`, 'utf-8');
+    expect(genDiff(pathBefore, pathAfter, 'json')).toEqual(expected.slice(0, -1));
   });
 });
 
@@ -36,28 +50,28 @@ describe('Testing YAML files', () => {
     const pathBefore = `${__dirname}/__fixtures__/yaml/before-flat.yaml`;
     const pathAfter = `${__dirname}/__fixtures__/yaml/after-flat.yaml`;
     const expected = fs.readFileSync(`${__dirname}/__fixtures__/yaml/result-flat`, 'utf-8');
-    expect(genDiff(pathBefore, pathAfter)).toBe(expected);
+    expect(genDiff(pathBefore, pathAfter)).toBe(expected.slice(0, -1));
   });
 
   it('genDiff checks two deep YAML files : default', () => {
     const pathBefore = `${__dirname}/__fixtures__/yaml/before-deep.yaml`;
     const pathAfter = `${__dirname}/__fixtures__/yaml/after-deep.yaml`;
     const expected = fs.readFileSync(`${__dirname}/__fixtures__/yaml/result-deep`, 'utf-8');
-    expect(genDiff(pathBefore, pathAfter)).toEqual(expected);
+    expect(genDiff(pathBefore, pathAfter)).toEqual(expected.slice(0, -1));
   });
 
   it('genDiff checks two flat YAML files : plain', () => {
     const pathBefore = `${__dirname}/__fixtures__/yaml/before-flat.yaml`;
     const pathAfter = `${__dirname}/__fixtures__/yaml/after-flat.yaml`;
     const expected = fs.readFileSync(`${__dirname}/__fixtures__/yaml/result-flat-plain`, 'utf-8');
-    expect(genDiff(pathBefore, pathAfter, 'plain')).toEqual(expected);
+    expect(genDiff(pathBefore, pathAfter, 'plain')).toEqual(expected.slice(0, -1));
   });
 
   it('genDiff checks two deep YAML files : plain', () => {
     const pathBefore = `${__dirname}/__fixtures__/yaml/before-deep.yaml`;
     const pathAfter = `${__dirname}/__fixtures__/yaml/after-deep.yaml`;
     const expected = fs.readFileSync(`${__dirname}/__fixtures__/yaml/result-deep-plain`, 'utf-8');
-    expect(genDiff(pathBefore, pathAfter, 'plain')).toEqual(expected);
+    expect(genDiff(pathBefore, pathAfter, 'plain')).toEqual(expected.slice(0, -1));
   });
 });
 
@@ -66,27 +80,27 @@ describe('Testing INI files', () => {
     const pathBefore = `${__dirname}/__fixtures__/ini/before-flat.ini`;
     const pathAfter = `${__dirname}/__fixtures__/ini/after-flat.ini`;
     const expected = fs.readFileSync(`${__dirname}/__fixtures__/ini/result-flat`, 'utf-8');
-    expect(genDiff(pathBefore, pathAfter)).toBe(expected);
+    expect(genDiff(pathBefore, pathAfter)).toBe(expected.slice(0, -1));
   });
 
   it('genDiff checks two deep INI files : default', () => {
     const pathBefore = `${__dirname}/__fixtures__/ini/before-deep.ini`;
     const pathAfter = `${__dirname}/__fixtures__/ini/after-deep.ini`;
     const expected = fs.readFileSync(`${__dirname}/__fixtures__/ini/result-deep`, 'utf-8');
-    expect(genDiff(pathBefore, pathAfter)).toEqual(expected);
+    expect(genDiff(pathBefore, pathAfter)).toEqual(expected.slice(0, -1));
   });
 
   it('genDiff checks two flat INI files : plain', () => {
     const pathBefore = `${__dirname}/__fixtures__/ini/before-flat.ini`;
     const pathAfter = `${__dirname}/__fixtures__/ini/after-flat.ini`;
     const expected = fs.readFileSync(`${__dirname}/__fixtures__/ini/result-flat-plain`, 'utf-8');
-    expect(genDiff(pathBefore, pathAfter, 'plain')).toEqual(expected);
+    expect(genDiff(pathBefore, pathAfter, 'plain')).toEqual(expected.slice(0, -1));
   });
 
   it('genDiff checks two deep INI files : plain', () => {
     const pathBefore = `${__dirname}/__fixtures__/ini/before-deep.ini`;
     const pathAfter = `${__dirname}/__fixtures__/ini/after-deep.ini`;
     const expected = fs.readFileSync(`${__dirname}/__fixtures__/ini/result-deep-plain`, 'utf-8');
-    expect(genDiff(pathBefore, pathAfter, 'plain')).toEqual(expected);
+    expect(genDiff(pathBefore, pathAfter, 'plain')).toEqual(expected.slice(0, -1));
   });
 });

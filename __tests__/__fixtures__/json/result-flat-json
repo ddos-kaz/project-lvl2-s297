@@ -1,0 +1,34 @@
+[
+   {
+      "name": "host",
+      "type": "similar",
+      "valueBefore": "hexlet.io",
+      "valueAfter": "hexlet.io",
+      "children": null
+   },
+   {
+      "name": "timeout",
+      "type": "modified",
+      "valueBefore": 50,
+      "valueAfter": 20,
+      "children": null
+   },
+   {
+      "name": "proxy",
+      "type": "removed",
+      "valueBefore": "123.234.53.22",
+      "children": null
+   },
+   {
+      "name": "follow",
+      "type": "removed",
+      "valueBefore": false,
+      "children": null
+   },
+   {
+      "name": "verbose",
+      "type": "added",
+      "valueAfter": true,
+      "children": null
+   }
+]

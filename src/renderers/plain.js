@@ -25,4 +25,4 @@ const buildLine = (obj, level) => {
   }
 };
 
-export default ast => `${ast.filter(item => item.type !== 'similar').map(item => buildLine(item, '')).join('\n')}\n`;
+export default ast => `${ast.filter(item => item.type !== 'similar').map(item => buildLine(item, '')).join('\n')}`;

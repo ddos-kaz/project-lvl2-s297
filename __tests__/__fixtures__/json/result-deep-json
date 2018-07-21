@@ -1,0 +1,120 @@
+[
+   {
+      "name": "common",
+      "type": "object",
+      "valueBefore": null,
+      "valueAfter": null,
+      "children": [
+         {
+            "name": "setting1",
+            "type": "similar",
+            "valueBefore": "Value 1",
+            "valueAfter": "Value 1",
+            "children": null
+         },
+         {
+            "name": "setting2",
+            "type": "removed",
+            "valueBefore": "200",
+            "children": null
+         },
+         {
+            "name": "setting3",
+            "type": "modified",
+            "valueBefore": true,
+            "valueAfter": {
+               "key": "value"
+            },
+            "children": null
+         },
+         {
+            "name": "setting6",
+            "type": "object",
+            "valueBefore": null,
+            "valueAfter": null,
+            "children": [
+               {
+                  "name": "key",
+                  "type": "similar",
+                  "valueBefore": "value",
+                  "valueAfter": "value",
+                  "children": null
+               },
+               {
+                  "name": "ops",
+                  "type": "added",
+                  "valueAfter": "vops",
+                  "children": null
+               }
+            ]
+         },
+         {
+            "name": "setting4",
+            "type": "added",
+            "valueAfter": "blah blah",
+            "children": null
+         },
+         {
+            "name": "setting5",
+            "type": "added",
+            "valueAfter": {
+               "key5": "value5"
+            },
+            "children": null
+         }
+      ]
+   },
+   {
+      "name": "group1",
+      "type": "object",
+      "valueBefore": null,
+      "valueAfter": null,
+      "children": [
+         {
+            "name": "baz",
+            "type": "modified",
+            "valueBefore": "bas",
+            "valueAfter": "bars",
+            "children": null
+         },
+         {
+            "name": "foo",
+            "type": "similar",
+            "valueBefore": "bar",
+            "valueAfter": "bar",
+            "children": null
+         },
+         {
+            "name": "nest",
+            "type": "modified",
+            "valueBefore": {
+               "key": "value"
+            },
+            "valueAfter": "str",
+            "children": null
+         }
+      ]
+   },
+   {
+      "name": "group2",
+      "type": "removed",
+      "valueBefore": {
+         "abc": "12345"
+      },
+      "children": null
+   },
+   {
+      "name": "follow",
+      "type": "added",
+      "valueAfter": false,
+      "children": null
+   },
+   {
+      "name": "group3",
+      "type": "added",
+      "valueAfter": {
+         "fee": "100500"
+      },
+      "children": null
+   }
+]
