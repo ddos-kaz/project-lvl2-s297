@@ -7,7 +7,4 @@ const fileExtFN = {
   '.ini': ini.parse,
 };
 
-export default (ext, fileData) => {
-  const fn = fileExtFN[ext];
-  return fn(fileData);
-};
+export default ext => fileExtFN[ext];
