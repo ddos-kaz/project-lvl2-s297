@@ -2,7 +2,7 @@ import fs from 'fs';
 import lodash from 'lodash';
 import path from 'path';
 import generateObj from './adapter-parser';
-import renderAST from './renderers/factory-renderers';
+import renderAST from './renderers';
 
 const generateAST = (key, beforeValue, afterValue) => {
   const resultObj = {

@@ -1,9 +1,9 @@
-import defaultFN from './default';
+import customFN from './custom';
 import plainFN from './plain';
 import jsonFN from './json';
 
 const formatFN = {
-  default: defaultFN,
+  default: customFN,
   plain: plainFN,
   json: jsonFN,
 };

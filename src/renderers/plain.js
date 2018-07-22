@@ -1,8 +1,8 @@
-import lodash from 'lodash';
+import _ from 'lodash';
 
-const isObject = value => (lodash.isObject(value) ? 'complex value' : value);
+const isObject = value => (_.isObject(value) ? 'complex value' : value);
 
-const isModifiedObject = value => (lodash.isObject(value) ? 'complex value' : `'${value}'`);
+const isModifiedObject = value => (_.isObject(value) ? 'complex value' : `'${value}'`);
 
 const buildLine = (obj, level) => {
   const {
@@ -12,17 +12,14 @@ const buildLine = (obj, level) => {
     valueAfter,
     children,
   } = obj;
-  const property = level === '' ? name : `${level}.${name}`;
-  switch (type) {
-    case 'object':
-      return children.filter(item => item.type !== 'similar').map(item => buildLine(item, `${property}`)).join('\n');
-    case 'added':
-      return `Property '${property}' was added with value: ${isObject(valueAfter)}`;
-    case 'removed':
-      return `Property '${property}' was removed`;
-    default:
-      return `Property '${property}' was updated. From ${isModifiedObject(valueBefore)} to ${isModifiedObject(valueAfter)}`;
-  }
+  const property = _.trim(`${level}.${name}`, '.');
+  const outputLineType = {
+    object: () => children.filter(item => item.type !== 'similar').map(item => buildLine(item, `${property}`)).join('\n'),
+    added: () => `Property '${property}' was added with value: ${isObject(valueAfter)}`,
+    removed: () => `Property '${property}' was removed`,
+    modified: () => `Property '${property}' was updated. From ${isModifiedObject(valueBefore)} to ${isModifiedObject(valueAfter)}`,
+  };
+  return outputLineType[type]();
 };
 
 export default ast => `${ast.filter(item => item.type !== 'similar').map(item => buildLine(item, '')).join('\n')}`;
