@@ -6,7 +6,7 @@ describe('Testing JSON files', () => {
     const pathBefore = `${__dirname}/__fixtures__/json/before-flat.json`;
     const pathAfter = `${__dirname}/__fixtures__/json/after-flat.json`;
     const expected = fs.readFileSync(`${__dirname}/__fixtures__/json/result-flat`, 'utf-8');
-    expect(genDiff(pathBefore, pathAfter, 'tree')).toEqual(expected.slice(0, -1));
+    expect(genDiff(pathBefore, pathAfter)).toEqual(expected.slice(0, -1));
   });
 
   it('genDiff checks two deep JSON files : default', () => {
@@ -50,7 +50,7 @@ describe('Testing YAML files', () => {
     const pathBefore = `${__dirname}/__fixtures__/yaml/before-flat.yaml`;
     const pathAfter = `${__dirname}/__fixtures__/yaml/after-flat.yaml`;
     const expected = fs.readFileSync(`${__dirname}/__fixtures__/yaml/result-flat`, 'utf-8');
-    expect(genDiff(pathBefore, pathAfter, 'tree')).toBe(expected.slice(0, -1));
+    expect(genDiff(pathBefore, pathAfter)).toBe(expected.slice(0, -1));
   });
 
   it('genDiff checks two deep YAML files : default', () => {
@@ -80,7 +80,7 @@ describe('Testing INI files', () => {
     const pathBefore = `${__dirname}/__fixtures__/ini/before-flat.ini`;
     const pathAfter = `${__dirname}/__fixtures__/ini/after-flat.ini`;
     const expected = fs.readFileSync(`${__dirname}/__fixtures__/ini/result-flat`, 'utf-8');
-    expect(genDiff(pathBefore, pathAfter, 'tree')).toBe(expected.slice(0, -1));
+    expect(genDiff(pathBefore, pathAfter)).toBe(expected.slice(0, -1));
   });
 
   it('genDiff checks two deep INI files : default', () => {
