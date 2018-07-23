@@ -1,9 +1,9 @@
-import customFN from './custom';
+import treeFN from './tree';
 import plainFN from './plain';
 import jsonFN from './json';
 
 const formatFN = {
-  default: customFN,
+  tree: treeFN,
   plain: plainFN,
   json: jsonFN,
 };

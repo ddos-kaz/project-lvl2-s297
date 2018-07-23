@@ -1,6 +1,6 @@
 {
   "name": "difference-estimator",
-  "version": "7.0.3",
+  "version": "7.0.4",
   "description": "Second project of Hexlet",
   "main": "src/index.js",
   "bin": {

@@ -1,50 +1,47 @@
 import fs from 'fs';
-import lodash from 'lodash';
+import _ from 'lodash';
 import path from 'path';
 import generateObj from './adapter-parser';
 import renderAST from './renderers';
 
-const generateAST = (key, beforeValue, afterValue) => {
-  const resultObj = {
-    name: key,
-    type: '',
-    valueBefore: beforeValue,
-    valueAfter: afterValue,
-    children: null,
-  };
-
-  if (lodash.isObject(beforeValue) && lodash.isObject(afterValue)) {
-    const valueKeys = lodash.union(Object.keys(beforeValue), Object.keys(afterValue));
-    return {
-      name: key,
-      type: 'object',
-      valueBefore: null,
-      valueAfter: null,
-      children: valueKeys.map(item => generateAST(item, beforeValue[item], afterValue[item])),
-    };
-  }
-
-  if (beforeValue === undefined) {
-    return { ...resultObj, type: 'added' };
-  }
-
-  if (afterValue === undefined) {
-    return { ...resultObj, type: 'removed' };
-  }
-
-  if (beforeValue === afterValue) {
-    return { ...resultObj, type: 'similar' };
-  }
-
-  return { ...resultObj, type: 'modified' };
-};
-
 const buildAST = (beforeObj, afterObj) => {
-  const allKeys = lodash.union(Object.keys(beforeObj), Object.keys(afterObj));
-  return allKeys.map(key => generateAST(key, beforeObj[key], afterObj[key]));
+  const allKeys = _.union(Object.keys(beforeObj), Object.keys(afterObj));
+  return allKeys.reduce((acc, key) => {
+    const resultObj = {
+      name: key,
+      type: '',
+      valueBefore: beforeObj[key],
+      valueAfter: afterObj[key],
+      children: null,
+    };
+
+    if (!_.has(beforeObj, key)) {
+      return [...acc, { ...resultObj, type: 'added' }];
+    }
+
+    if (!_.has(afterObj, key)) {
+      return [...acc, { ...resultObj, type: 'removed' }];
+    }
+
+    if (_.isObject(resultObj.valueBefore) && _.isObject(resultObj.valueAfter)) {
+      return [...acc, {
+        name: key,
+        type: 'object',
+        valueBefore: null,
+        valueAfter: null,
+        children: buildAST(resultObj.valueBefore, resultObj.valueAfter),
+      }];
+    }
+
+    if (resultObj.valueBefore === resultObj.valueAfter) {
+      return [...acc, { ...resultObj, type: 'similar' }];
+    }
+
+    return [...acc, { ...resultObj, type: 'modified' }];
+  }, []);
 };
 
-export default (pathToBeforeFile, pathToAfterFile, format = 'default') => {
+export default (pathToBeforeFile, pathToAfterFile, format) => {
   const beforeFile = fs.readFileSync(pathToBeforeFile, 'utf-8');
   const afterFile = fs.readFileSync(pathToAfterFile, 'utf-8');
   const beforeFileExt = path.extname(pathToBeforeFile);
