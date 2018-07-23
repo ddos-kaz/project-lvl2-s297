@@ -41,7 +41,7 @@ const buildAST = (beforeObj, afterObj) => {
   }, []);
 };
 
-export default (pathToBeforeFile, pathToAfterFile, format) => {
+export default (pathToBeforeFile, pathToAfterFile, format = 'tree') => {
   const beforeFile = fs.readFileSync(pathToBeforeFile, 'utf-8');
   const afterFile = fs.readFileSync(pathToAfterFile, 'utf-8');
   const beforeFileExt = path.extname(pathToBeforeFile);
