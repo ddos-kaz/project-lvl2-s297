@@ -1,7 +1,7 @@
 import fs from 'fs';
 import _ from 'lodash';
 import path from 'path';
-import generateObj from './adapter-parser';
+import generateObj from './parser';
 import renderAST from './renderers';
 
 const buildAST = (beforeObj, afterObj) => {
@@ -10,34 +10,42 @@ const buildAST = (beforeObj, afterObj) => {
     const resultObj = {
       name: key,
       type: '',
-      valueBefore: beforeObj[key],
-      valueAfter: afterObj[key],
+      valueBefore: null,
+      valueAfter: null,
       children: null,
     };
 
     if (!_.has(beforeObj, key)) {
-      return [...acc, { ...resultObj, type: 'added' }];
+      return [...acc, { ...resultObj, valueAfter: afterObj[key], type: 'added' }];
     }
 
     if (!_.has(afterObj, key)) {
-      return [...acc, { ...resultObj, type: 'removed' }];
+      return [...acc, { ...resultObj, valueBefore: beforeObj[key], type: 'removed' }];
     }
 
-    if (_.isObject(resultObj.valueBefore) && _.isObject(resultObj.valueAfter)) {
+    if (_.isObject(beforeObj[key]) && _.isObject(afterObj[key])) {
       return [...acc, {
         name: key,
         type: 'object',
-        valueBefore: null,
-        valueAfter: null,
-        children: buildAST(resultObj.valueBefore, resultObj.valueAfter),
+        children: buildAST(beforeObj[key], afterObj[key]),
       }];
     }
 
-    if (resultObj.valueBefore === resultObj.valueAfter) {
-      return [...acc, { ...resultObj, type: 'similar' }];
+    if (beforeObj[key] === afterObj[key]) {
+      return [...acc, {
+        ...resultObj,
+        valueBefore: beforeObj[key],
+        valueAfter: afterObj[key],
+        type: 'similar',
+      }];
     }
 
-    return [...acc, { ...resultObj, type: 'modified' }];
+    return [...acc, {
+      ...resultObj,
+      valueBefore: beforeObj[key],
+      valueAfter: afterObj[key],
+      type: 'modified',
+    }];
   }, []);
 };
 

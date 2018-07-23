@@ -2,8 +2,6 @@
    {
       "name": "common",
       "type": "object",
-      "valueBefore": null,
-      "valueAfter": null,
       "children": [
          {
             "name": "setting1",
@@ -16,6 +14,7 @@
             "name": "setting2",
             "type": "removed",
             "valueBefore": "200",
+            "valueAfter": null,
             "children": null
          },
          {
@@ -30,8 +29,6 @@
          {
             "name": "setting6",
             "type": "object",
-            "valueBefore": null,
-            "valueAfter": null,
             "children": [
                {
                   "name": "key",
@@ -43,6 +40,7 @@
                {
                   "name": "ops",
                   "type": "added",
+                  "valueBefore": null,
                   "valueAfter": "vops",
                   "children": null
                }
@@ -51,12 +49,14 @@
          {
             "name": "setting4",
             "type": "added",
+            "valueBefore": null,
             "valueAfter": "blah blah",
             "children": null
          },
          {
             "name": "setting5",
             "type": "added",
+            "valueBefore": null,
             "valueAfter": {
                "key5": "value5"
             },
@@ -67,8 +67,6 @@
    {
       "name": "group1",
       "type": "object",
-      "valueBefore": null,
-      "valueAfter": null,
       "children": [
          {
             "name": "baz",
@@ -101,17 +99,20 @@
       "valueBefore": {
          "abc": "12345"
       },
+      "valueAfter": null,
       "children": null
    },
    {
       "name": "follow",
       "type": "added",
+      "valueBefore": null,
       "valueAfter": false,
       "children": null
    },
    {
       "name": "group3",
       "type": "added",
+      "valueBefore": null,
       "valueAfter": {
          "fee": "100500"
       },

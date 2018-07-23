@@ -17,17 +17,20 @@
       "name": "proxy",
       "type": "removed",
       "valueBefore": "123.234.53.22",
+      "valueAfter": null,
       "children": null
    },
    {
       "name": "follow",
       "type": "removed",
       "valueBefore": false,
+      "valueAfter": null,
       "children": null
    },
    {
       "name": "verbose",
       "type": "added",
+      "valueBefore": null,
       "valueAfter": true,
       "children": null
    }
